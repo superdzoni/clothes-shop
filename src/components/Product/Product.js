@@ -15,8 +15,18 @@ const Product = ({ title, name, basePrice, sizes, colors }) => {
   }
 
   const getPrice = () => {
-    const foundSize = () => sizes.find(element => element.name === currentSize.name)
-      return (basePrice + foundSize.additionalPrice)
+    const foundSize = sizes.find(element => element.name === currentSize)
+    return (basePrice + foundSize.additionalPrice)
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('Summary');
+    console.log('==============');
+    console.log('Name:', title);
+    console.log('Price:', getPrice());
+    console.log('Size:', currentSize);
+    console.log('Color:', currentColor);
   }
 
   return (
@@ -32,7 +42,7 @@ const Product = ({ title, name, basePrice, sizes, colors }) => {
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <form>
+        <form onSubmit={e =>  handleSubmit(e)}>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
