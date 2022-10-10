@@ -14,7 +14,7 @@ const OptionColor = ({ colors, currentColor, setCurrentColor }) => {
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
             {colors.map(color =>
-              <li key={shortid}>
+              <li key={shortid()}>
                 <button type="button" onClick={() => setCurrentColor(color)} className={clsx(prepareColorClassName(color), currentColor === color && styles.active)} />
               </li>
             )}
